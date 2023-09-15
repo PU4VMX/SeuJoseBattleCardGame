@@ -13,10 +13,11 @@ class LeitorCartas (){
             if(!::cartas.isInitialized){
                 /*aqui deve ocorrer a carga das cartas
                 *
+
                 *Sugiro usar a função map para transformar as String recuperadas do arquivo em objetos do tipo carta
                 */
                 //cartas = lerCartasCSV()
-                println(lerCartasCSV())
+                cartas = lerCartasCSV().map { Carta(it) }
             }
             return cartas.map { it }  //retorna uma replica das cartas
         }
@@ -26,8 +27,9 @@ class LeitorCartas (){
             val leitorStream = streamDados.bufferedReader()
             return leitorStream.lineSequence()
                 .filter { it.isNotBlank() }.toList()
-
         }
+
+
     }
 
 

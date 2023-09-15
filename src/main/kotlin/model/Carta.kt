@@ -1,5 +1,5 @@
 package model
 
-class Carta {
+class Carta(s: String) {
 
 }
