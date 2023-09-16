@@ -11,12 +11,6 @@ class LeitorCartas (){
 
         fun getCartas():List<Carta>{
             if(!::cartas.isInitialized){
-                /*aqui deve ocorrer a carga das cartas
-                *
-
-                *Sugiro usar a função map para transformar as String recuperadas do arquivo em objetos do tipo carta
-                */
-                //cartas = lerCartasCSV()
                 cartas = lerCartasCSV().map { Carta(it) }
             }
             return cartas.map { it }  //retorna uma replica das cartas
@@ -27,6 +21,17 @@ class LeitorCartas (){
             val leitorStream = streamDados.bufferedReader()
             return leitorStream.lineSequence()
                 .filter { it.isNotBlank() }.toList()
+        }
+
+        //sortear 5 cartas
+        fun sortearCartas():List<Carta>{
+            val cartas = getCartas()
+            val cartasSorteadas = mutableListOf<Carta>()
+            for(i in 1..5){
+                val carta = cartas.random()
+                cartasSorteadas.add(carta)
+            }
+            return cartasSorteadas
         }
 
 

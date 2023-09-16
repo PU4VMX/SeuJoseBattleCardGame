@@ -11,6 +11,8 @@ fun main(args: Array<String>) {
      */
 
     //veja que o código gera um erro pois as cartas disponíveis ainda não foram inicializadas
-    println(LeitorCartas.getCartas())
+    for (carta in LeitorCartas.sortearCartas()){
+        println(carta)
+    }
 
 }
