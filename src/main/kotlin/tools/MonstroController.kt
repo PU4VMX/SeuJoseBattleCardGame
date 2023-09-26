@@ -1,5 +1,0 @@
-package tools
-
-class MonstroController {
-
-}

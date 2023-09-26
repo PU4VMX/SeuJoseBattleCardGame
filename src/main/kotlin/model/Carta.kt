@@ -20,3 +20,4 @@ class Carta(s: String) {
         return "$nome - $descricao - $ataque - $defesa - $categoria"
     }
 }
+
