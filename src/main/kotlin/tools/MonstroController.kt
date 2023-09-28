@@ -3,8 +3,6 @@ package tools
 import model.Monstro
 
 class MonstroController {
-    //setar modo de ataque ou defesa do monstro
-
 
     companion object {
         fun setModo(monstro: Monstro):Monstro {
@@ -12,15 +10,17 @@ class MonstroController {
             println("1 - Ataque")
             println("2 - Defesa")
             val modo = readln().toInt()
-            if (modo == 1) {
-                monstro.modo = "ataque"
-            }
-            if (modo == 2) {
-                monstro.modo = "defesa"
-            }
-            else {
-                println("Opção inválida, tente novamente")
-                setModo(monstro)
+            when (modo) {
+                1 -> {
+                    monstro.modo = "ataque"
+                }
+                2 -> {
+                    monstro.modo = "defesa"
+                }
+                else -> {
+                    println("Opção inválida, tente novamente")
+                    setModo(monstro)
+                }
             }
             return monstro
         }

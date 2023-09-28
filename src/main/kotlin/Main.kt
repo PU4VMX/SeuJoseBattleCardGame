@@ -14,5 +14,4 @@ fun main(args: Array<String>) {
 
     println("Monstro Player 1: ${tabuleiro_player1.monstro}")
     println("Monstro Player 2: ${tabuleiro_player2.monstro}")
-
 }
