@@ -13,10 +13,6 @@ class RodadaController {
     * */
 
 
-    fun posicionarMonstro(player: Player, monstro: Monstro) {
-        val tabuleiro = Tabuleiro(monstro, player)
-        println(tabuleiro)
-    }
 
     fun equiparMonstro(equipamento: Equipamento, monstro: Monstro) {
         monstro.ataque += equipamento.ataque

@@ -1,12 +1,12 @@
 package model
 
-class Tabuleiro(monstro: Monstro, player: Player) {
-    val monstro: Monstro
+class Tabuleiro(player: Player, monstro: Monstro? = null) {
     val player: Player
+    val monstro: List<Monstro>
 
     init {
-        this.monstro = monstro
         this.player = player
+        this.monstro = listOf(monstro!!)
     }
 
     override fun toString(): String {

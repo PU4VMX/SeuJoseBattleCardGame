@@ -7,7 +7,7 @@ import model.Player
 class PlayerController {
 
     companion object {
-        fun createPlayer(): Player {
+        fun createPlayer(nome: String): Player {
             val baralho = LeitorCartas.distribuirCartas()
             val monstro = mutableListOf<Monstro>()
 
@@ -16,9 +16,6 @@ class PlayerController {
                     monstro.add(Monstro(it.nome, it.descricao, it.ataque, it.defesa))
                 }
             }
-
-            println("Digite seu nome: ")
-            val nome = readln()
             return Player(nome, 10000, baralho, monstro)
         }
 
@@ -35,6 +32,14 @@ class PlayerController {
                 }
             }
             val index = readln().toInt()
+            if (index > player.baralho.size) {
+                println("Carta não existe, escolha outra carta")
+                getMonstro(player)
+            }
+            else if (player.baralho[index].categoria != "monstro") {
+                println("Carta não é um monstro, escolha outra carta")
+                getMonstro(player)
+            }
             player.baralho[index].let {
                 return Monstro(it.nome, it.descricao, it.ataque, it.defesa)
             }
