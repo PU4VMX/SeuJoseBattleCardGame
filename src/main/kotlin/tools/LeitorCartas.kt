@@ -10,7 +10,10 @@ class LeitorCartas() {
         private lateinit var cartas: List<Carta>
 
         private fun lerCartasCSV(): List<String> {
-            val streamDados: InputStream = File("SeuJoseBattleCardGame/cartas.csv").inputStream()
+            var streamDados: InputStream = File("cartas.csv").inputStream()
+            if (streamDados.available() == 0) {
+                streamDados = File("SeuJoseBattleCardGame/cartas.csv").inputStream()
+            }
             val leitorStream = streamDados.bufferedReader()
             return leitorStream.lineSequence()
                 .filter { it.isNotBlank() }.toList()

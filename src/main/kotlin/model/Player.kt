@@ -2,7 +2,7 @@ package model
 
 class Player(nome: String, pontos: Int, baralho: List<Carta>, monstro: MutableList<Monstro>) {
     val nome: String
-    val pontos: Int
+    var pontos: Int
     val baralho: List<Carta>
 
     init {
