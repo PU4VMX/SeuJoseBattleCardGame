@@ -20,7 +20,7 @@ class LeitorCartas() {
         }
 
 
-        private fun getCartas(): List<Carta> {
+        fun getCartas(): List<Carta> {
             if (!::cartas.isInitialized) {
                 cartas = lerCartasCSV().map { Carta(it) }
             }
@@ -31,8 +31,7 @@ class LeitorCartas() {
             cartas = cartas.filter { it.nome != carta.nome }
         }
 
-        fun distribuirCartas(): List<Carta> {
-            val cartas = getCartas()
+        fun distribuirCartas(Baralho: List<Carta>): List<Carta> {
             val cartasDistribuidas = mutableListOf<Carta>()
             for (i in 1..5) {
                 val carta = cartas.random()

@@ -1,12 +1,16 @@
-import model.Tabuleiro
+import model.Player
+import tools.LeitorCartas
+import tools.LeitorCartas.Companion.distribuirCartas
 import tools.PlayerController
 import tools.RodadaController
 import tools.TabuleiroController
 
 fun main(args: Array<String>) {
 
-    val player1 = PlayerController.createPlayer("Player 1")
-    val player2 = PlayerController.createPlayer("Player 2")
+    val baralho = LeitorCartas.getCartas()
+
+    val player1: Player = PlayerController.createPlayer("Duda", distribuirCartas(baralho))
+    val player2: Player = PlayerController.createPlayer("Vinicius", distribuirCartas(baralho))
 
     val tabuleiro_player1 = TabuleiroController.createTabuleiro(player1, PlayerController.getMonstro(player1));
     val tabuleiro_player2 = TabuleiroController.createTabuleiro(player2, PlayerController.getMonstro(player2));

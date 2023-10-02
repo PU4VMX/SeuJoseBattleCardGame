@@ -2,7 +2,7 @@ package model
 
 class Tabuleiro(player: Player, monstro: Monstro? = null) {
     val player: Player
-    val monstro: List<Monstro>
+    var monstro: List<Monstro>
 
     init {
         this.player = player

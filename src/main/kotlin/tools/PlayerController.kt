@@ -4,12 +4,12 @@ import model.Carta
 import model.Equipamento
 import model.Monstro
 import model.Player
+import tools.LeitorCartas.Companion.obterCartaAleatoria
 
 class PlayerController {
 
     companion object {
-        fun createPlayer(nome: String): Player {
-            val baralho = LeitorCartas.distribuirCartas()
+        fun createPlayer(nome: String, baralho: List<Carta>): Player {
             val monstro = mutableListOf<Monstro>()
 
             baralho.forEach {
@@ -21,7 +21,7 @@ class PlayerController {
         }
 
         private fun removerCarta(player: Player, carta: Carta) {
-            player.baralho.minus(carta)
+            player.baralho = player.baralho.filter { it.nome != carta.nome }
         }
 
 
@@ -52,6 +52,21 @@ class PlayerController {
             player.baralho.forEachIndexed { index, carta ->
                 if (carta.categoria == "equipamento") {
                     println("$index - ${carta.nome} - ${carta.descricao} - ${carta.ataque} - ${carta.defesa}")
+                }
+            }
+            if (player.baralho.filter { it.categoria == "equipamento" }.isEmpty()) {
+                println("Não existem equipamentos no baralho")
+                println("Deseja obter uma carta aleatória? S/N")
+                val opcao = readln()
+                if (opcao == "S") {
+                    val carta = obterCartaAleatoria()
+                    if (carta.categoria == "equipamento") {
+                        return Equipamento(carta.nome, carta.descricao, carta.ataque, carta.defesa)
+                    } else {
+                        getEquipamento(player)
+                    }
+                } else {
+                    getEquipamento(player)
                 }
             }
             val index = readln().toInt()

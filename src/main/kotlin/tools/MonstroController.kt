@@ -9,7 +9,13 @@ class MonstroController {
             println("Deseja setar o modo de ataque ou defesa?")
             println("1 - Ataque")
             println("2 - Defesa")
-            val modo = readln().toInt()
+            var modo: Int = 0
+            try {
+                modo = readln().toInt()
+            } catch (e: Exception) {
+                println("Opção inválida, tente novamente")
+                setModo(monstro)
+            }
             when (modo) {
                 1 -> {
                     monstro.modo = "ataque"
